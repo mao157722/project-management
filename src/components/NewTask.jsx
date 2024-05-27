@@ -1,0 +1,28 @@
+import { useState } from "react";
+
+export default function NewTask({ onAdd }) {
+
+    const [enteredTask, setEnteredTask] = useState('');
+
+    function handleChange(event) {
+        setEnteredTask(event.target.value);
+    }
+
+    function handleClick() {
+        onAdd(enteredTask);
+        setEnteredTask('');
+    }
+
+    return (
+        <div className="flex items-center gap-4">
+            <input
+                type="text"
+                onChange={handleChange}
+                className="w-64 px-2 py-1 rounded-sm bg-stone-200"
+                value={enteredTask} />
+            <button
+                onClick={handleClick}
+                className="text-stone-800 mb-4">+ เพิ่มงาน</button>
+        </div>
+    );
+}
